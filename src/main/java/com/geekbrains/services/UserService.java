@@ -71,6 +71,9 @@ public class UserService {
     }
 
     public List<User> getAllUsersWithType(UserType userType) {
-        return userRepository.findAll();
+
+        Role role = roleService.getByUserType(userType);
+
+        return userRepository.findAllByRoles(role);
     }
 }
